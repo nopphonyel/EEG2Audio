@@ -91,7 +91,7 @@ def generateSpectrogramForWave(signal):
                 magnitudeMin = magnitude
 
             phase = math.atan2(fft[h].imag, fft[h].real)
-            if phase > phaseMax:
+            if phase > phaseMax: # Here is just finding the phaseMax and phaseMin... shall we remove this line?
                 phaseMax = phase
             if phase < phaseMin:
                 phaseMin = phase
@@ -100,6 +100,11 @@ def generateSpectrogramForWave(signal):
     rgbArray = generateLinearScale(magnitudePixels, phasePixels,
                                   magnitudeMin, magnitudeMax, phaseMin, phaseMax)
     elapsed_time = time.time() - start_time
+    print("---- Analyze result ----")
+    print("magnitudeMin", magnitudeMin)
+    print("magnitudeMax", magnitudeMax)
+    print("phaseMin", phaseMin)
+    print("phaseMax", phaseMax)
     print('%.2f' % elapsed_time, 's', sep='')
     img = Image.fromarray(rgbArray, 'RGB')
     return img
@@ -129,14 +134,14 @@ def recoverSignalFromSpectrogram(filePath):
 if __name__ == '__main__':
     print("Audio2IMG, thanks sikora507 for the code")
 
-    rate, audData = readSound('audio_sample/t+pazolite - Tempestissimo.wav')
+    rate, audData = readSound('audio_sample/t+pazolite vs PLight - IZANA.wav')
     channel1 = audData[:, 0]  # left
     channel2 = audData[:, 1]  # right
     signal_fragment = channel1[30 * rate:35 * rate]
     signal_whole = channel1
 
-    img = generateSpectrogramForWave(signal_whole)
-    writeSound("audio_sample/before.wav", rate, signal_whole)
-    img.save("audio_sample/spectrogram.png", "PNG")
+    img = generateSpectrogramForWave(signal_fragment)
+    writeSound("audio_sample/before.wav", rate, signal_fragment)
+    img.save("audio_sample/spectrogram_IZANA.png", "PNG")
 
-    recoverSignalFromSpectrogram("audio_sample/spectrogram.png")
+    recoverSignalFromSpectrogram("audio_sample/spectrogram_IZANA.png")

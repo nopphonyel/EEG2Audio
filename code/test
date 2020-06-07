@@ -1,0 +1,15 @@
+t+pazolite Tempestissimo
+    magnitudeMin 0.012348305899649858
+    magnitudeMax 2571126.1305736243
+    phaseMin -3.141589806241545
+    phaseMax 3.141592653589793
+
+t+pazolite vs P-Light IZANA
+    magnitudeMin 0.011263183565461077
+    magnitudeMax 3191152.014439956
+    phaseMin -3.141591521833385
+    phaseMax 3.141592653589793
+
+for phaseMin and phaseMax, we can use -pi and pi value
+what about magnitudeMin and magnitudeMax?
+    Is it safe to use magnitudeMin as 0.01?
