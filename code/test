@@ -10,6 +10,12 @@ t+pazolite vs P-Light IZANA
     phaseMin -3.141591521833385
     phaseMax 3.141592653589793
 
+Breathe (LOR Remix)
+    magnitudeMin 0.04316797329192923
+    magnitudeMax 3767577.670854391
+    phaseMin -3.141586362556165
+    phaseMax 3.141592653589793
+
 for phaseMin and phaseMax, we can use -pi and pi value
 what about magnitudeMin and magnitudeMax?
     Is it safe to use magnitudeMin as 0.01?

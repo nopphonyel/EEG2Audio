@@ -128,20 +128,20 @@ def recoverSignalFromSpectrogram(filePath):
             toInverse[h] = magnitude * math.cos(phase) + (1j * magnitude * math.sin(phase))
         signal = np.fft.irfft(toInverse)
         recovered[w * WINDOW_STEP:w * WINDOW_STEP + WINDOW_LENGTH] += signal[:WINDOW_LENGTH].astype(np.int16)
-    writeSound("audio_sample/recovered.wav", rate, recovered)
+    writeSound("../audio_sample/recovered.wav", rate, recovered)
 
 # This is where the code will execute
 if __name__ == '__main__':
     print("Audio2IMG, thanks sikora507 for the code")
 
-    rate, audData = readSound('audio_sample/t+pazolite vs PLight - IZANA.wav')
+    rate, audData = readSound('../audio_sample/Breathe(LOR_Remix).wav')
     channel1 = audData[:, 0]  # left
     channel2 = audData[:, 1]  # right
     signal_fragment = channel1[30 * rate:35 * rate]
     signal_whole = channel1
 
     img = generateSpectrogramForWave(signal_fragment)
-    writeSound("audio_sample/before.wav", rate, signal_fragment)
-    img.save("audio_sample/spectrogram_IZANA.png", "PNG")
+    writeSound("../audio_sample/before.wav", rate, signal_fragment)
+    img.save("../audio_sample/spectrogram_Breathe.png", "PNG")
 
-    recoverSignalFromSpectrogram("audio_sample/spectrogram_IZANA.png")
+    recoverSignalFromSpectrogram("../audio_sample/spectrogram_Breathe.png")
