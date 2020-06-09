@@ -1,0 +1,47 @@
+t+pazolite Tempestissimo
+    magnitudeMin 0.012348305899649858
+    magnitudeMax 2571126.1305736243
+    phaseMin -3.141589806241545
+    phaseMax 3.141592653589793
+
+t+pazolite vs P-Light IZANA
+    magnitudeMin 0.011263183565461077
+    magnitudeMax 3191152.014439956
+    phaseMin -3.141591521833385
+    phaseMax 3.141592653589793
+
+Breathe (LOR Remix)
+    magnitudeMin 0.04316797329192923
+    magnitudeMax 3767577.670854391
+    phaseMin -3.141586362556165
+    phaseMax 3.141592653589793
+
+RAS - JOKER
+    magnitudeMin 0.007661335013835924 << Here, its indicate that it might be better if use 0
+    magnitudeMax 2090282.8071628618
+    phaseMin -3.141557251907679
+    phaseMax 3.141592653589793
+
+NR7 - Sentient
+    magnitudeMin 3.2121828553499654e-05
+    magnitudeMax 2911829.2577037537
+    phaseMin -3.1415825294100057
+    phaseMax 3.141592653589793
+
+
+NR7 - Monitoring
+    magnitudeMin 0.0
+    magnitudeMax 3837461.60769864
+    phaseMin -3.1415901446408188
+    phaseMax 3.141592653589793
+    IMG_width 513
+
+for phaseMin and phaseMax, we can use -pi and pi value
+what about magnitudeMin and magnitudeMax?
+    Is it safe to use magnitudeMin as 0.01?
+
+CONCLUSION:
+    phaseMin = -pi
+    phaseMax = pi
+    magnitudeMin = 0?
+    magnitudeMax = _____? Still unknown >> 4,000,000  4M
