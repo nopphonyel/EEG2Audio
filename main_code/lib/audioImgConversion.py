@@ -65,7 +65,9 @@ class audioImgConversion:
             self.__signal = self.__signalOrig[:, 0]
         else:
             if type(aud_range) is tuple:
-                self.__signal = self.__signalOrig[:, 0][aud_range[0] * self.__rate: aud_range[1] * self.__rate]
+                print(aud_range[0])
+                self.__signal = self.__signalOrig[:, 0][
+                                int(aud_range[0] * self.__rate): int(aud_range[1] * self.__rate)]
             else:
                 print("<X> : Parameter expected to be None or Tuple")
 
@@ -74,7 +76,7 @@ class audioImgConversion:
         self.__signalOrig = audData
         self.__signal = self.__signalOrig[:, 0]
 
-    def setRecoverRate(self, newRate):
+    def setSampleRate(self, newRate):
         self.__rate = newRate
 
     def genSpectrogram(self, exportPath):
