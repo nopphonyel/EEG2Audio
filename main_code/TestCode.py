@@ -1,8 +1,13 @@
-from main_code.lib.audioImgConversion import audioImgConversion
+import torch
 
-convertor = audioImgConversion()
-audio_path = 'audio_sample/Sentient_11K.wav'
-convertor.loadSignal(audio_path)
-convertor.setAudioRange((1, 2))
-convertor.setSampleRate(11000)
-convertor.genSpectrogram('./sentient_img.png')
+blank_tensor = torch.zeros((3,1))
+print(blank_tensor)
+
+x = torch.nn.init.xavier_uniform_(blank_tensor)
+print(x, blank_tensor)
+
+y = torch.nn.init.zeros_(blank_tensor)
+print(y, blank_tensor)
+
+
+
