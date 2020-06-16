@@ -23,6 +23,12 @@ class GENERATOR_RGB(nn.Module):
             , nn.ReLU()
         )
 
+        self.conv2dT01 = nn.Sequential(
+            nn.BatchNorm2d(num_features=1)
+            , nn.ConvTranspose2d(in_channels=1,out_channels=256, kernel_size=5, stride=2)
+            , nn.ReLU
+        )
+
     def forward(self, eeg_features):
         noise_input = self.gen_noise(self.noise_dim)
         x = self.MoGLayer(eeg_features, noise_input)
