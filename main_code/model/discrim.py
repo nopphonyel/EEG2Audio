@@ -5,6 +5,9 @@ import torch.nn.functional as func
 
 
 class DISCRIM_RGB(nn.Module):
+    """
+    Currently, this model require a batch size
+    """
 
     def __init__(self, img_classifier):
         super(DISCRIM_RGB, self).__init__()
@@ -51,12 +54,13 @@ class DISCRIM_RGB(nn.Module):
             if idx == 5:  # Break before do batch_norm
                 break
             x = batchNorm_layer(x)
+            print(x.shape)
 
         print(x.shape)
         x = torch.flatten(x)  # flatten operation
-        self.dense = nn.Linear(in_features=10, out_features=1)  # Todo: recheck the input_features.
+        self.dense = nn.Linear(in_features=x.shape[0], out_features=1)  # Todo: recheck the input_features.
 
         x = self.dense(x)
         fake = self.sigmoid(x)
-        img_class = self.img_classifier(x)
-        return fake, img_class  # Todo: merge into a single tensor (Do we really need to merge?)
+        #img_class = self.img_classifier(x)
+        return fake#, img_class  # Todo: merge into a single tensor (Do we really need to merge?)
