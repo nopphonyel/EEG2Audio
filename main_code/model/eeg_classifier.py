@@ -52,7 +52,8 @@ class EEG_CLASSIFIER(nn.Module):
         eeg = eeg.transpose(0, 1)  # Swap dimension between dimension 1 and 0
         x = self.batchNorm_1st(eeg)  # due to batch norm got something weird
         x = x.transpose(0, 1)  # switch back
-        x = self.__checkShape(x)
+        x = self.__checkShape(x) # Add another dimension to tensor
+
         x = self.conv1d32(x)
         x = self.conv1d25(x)
         x = self.maxPool(x)
