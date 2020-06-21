@@ -55,6 +55,9 @@ class GENERATOR_RGB(nn.Module):
 
         self.tanh = nn.Tanh()
 
+    """
+    Expected tensor to have shape (N,C,...)
+    """
     def forward(self, eeg_features):
         noise_input = gen_noise(self.noise_dim)
         x = self.MoGLayer(noise_input)

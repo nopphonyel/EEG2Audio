@@ -76,6 +76,9 @@ class DISCRIM_RGB(nn.Module):
             total = total * tensor.shape[i]
         return total
 
+    """
+    Expected tensor to have shape (N,C,H,W,...)
+    """
     def forward(self, img):
         for idx, conv2d_layer in enumerate(self.conv2dPack):
             print("LAYER :", idx)

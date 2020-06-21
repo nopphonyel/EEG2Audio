@@ -47,12 +47,14 @@ class EEG_CLASSIFIER(nn.Module):
         if len(x.shape) == 2:
             return x.unsqueeze(0)
 
-    # Since we have no observation.... what should.. we do?
+    """
+    Expected tensor to have shape (N,C,O,???,...)
+    """
     def forward(self, eeg):
         eeg = eeg.transpose(0, 1)  # Swap dimension between dimension 1 and 0
         x = self.batchNorm_1st(eeg)  # due to batch norm got something weird
         x = x.transpose(0, 1)  # switch back
-        x = self.__checkShape(x) # Add another dimension to tensor
+        x = self.__checkShape(x)  # Add another dimension to tensor
 
         x = self.conv1d32(x)
         x = self.conv1d25(x)
