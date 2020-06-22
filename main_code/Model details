@@ -2,6 +2,8 @@
     _________________________________________________________________
     Layer (type)                 Output Shape              Param #
     =================================================================
+    Input data                   (44367, 14, 32, 1) --> pytorch(44367, 1, 14, 32)
+    _________________________________________________________________
     batch_normalization_1 (Batch (None, 14, 32, 1)         4
     _________________________________________________________________
     conv2d_1 (Conv2D)            (None, 14, 29, 32)        160
@@ -147,6 +149,123 @@
  # ((4 - 1) * 2) - (2*1) + 1 * (5-1) + 0 + 1
  # 6 - 0 + 0 + 4 + 1 = 11 - 2 - 1 =  8
 
-Todo:
-    - EEG Classifier -> What is observation means?
-    - Image Classifier -> using same architect as VGG-16
+:VGG16 Model
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #
+    =================================================================
+    conv2d_1 (Conv2D)            (None, 64, 64, 32)        896
+    _________________________________________________________________
+    activation_1 (ReLU)          (None, 64, 64, 32)        0
+    _________________________________________________________________
+    conv2d_2 (Conv2D)            (None, 62, 62, 32)        9248
+    _________________________________________________________________
+    activation_2 (ReLU)          (None, 62, 62, 32)        0
+    _________________________________________________________________
+    max_pooling2d_1 (MaxPooling2 (None, 31, 31, 32)        0
+    _________________________________________________________________
+    dropout_1 (Dropout)          (None, 31, 31, 32)        0
+    _________________________________________________________________
+    conv2d_3 (Conv2D)            (None, 31, 31, 64)        18496
+    _________________________________________________________________
+    activation_3 (ReLU)          (None, 31, 31, 64)        0
+    _________________________________________________________________
+    conv2d_4 (Conv2D)            (None, 29, 29, 64)        36928
+    _________________________________________________________________
+    activation_4 (ReLU)          (None, 29, 29, 64)        0
+    _________________________________________________________________
+    max_pooling2d_2 (MaxPooling2 (None, 14, 14, 64)        0
+    _________________________________________________________________
+    dropout_2 (Dropout)          (None, 14, 14, 64)        0
+    _________________________________________________________________
+    conv2d_5 (Conv2D)            (None, 14, 14, 128)       73856
+    _________________________________________________________________
+    activation_5 (ReLU)          (None, 14, 14, 128)       0
+    _________________________________________________________________
+    conv2d_6 (Conv2D)            (None, 12, 12, 128)       147584
+    _________________________________________________________________
+    activation_6 (ReLU)          (None, 12, 12, 128)       0
+    _________________________________________________________________
+    max_pooling2d_3 (MaxPooling2 (None, 6, 6, 128)         0
+    _________________________________________________________________
+    dropout_3 (Dropout)          (None, 6, 6, 128)         0
+    _________________________________________________________________
+    conv2d_7 (Conv2D)            (None, 6, 6, 256)         295168
+    _________________________________________________________________
+    activation_7 (ReLU)          (None, 6, 6, 256)         0
+    _________________________________________________________________
+    conv2d_8 (Conv2D)            (None, 4, 4, 256)         590080
+    _________________________________________________________________
+    activation_8 (ReLU)          (None, 4, 4, 256)         0
+    _________________________________________________________________
+    max_pooling2d_4 (MaxPooling2 (None, 2, 2, 256)         0
+    _________________________________________________________________
+    dropout_4 (Dropout)          (None, 2, 2, 256)         0
+    _________________________________________________________________
+    flatten_1 (Flatten)          (None, 1024)              0
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 512)               524800
+    _________________________________________________________________
+    activation_9 (ReLU)          (None, 512)               0
+    _________________________________________________________________
+    dropout_5 (Dropout)          (None, 512)               0
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 256)               131328
+    _________________________________________________________________
+    activation_10 (ReLU)         (None, 256)               0
+    _________________________________________________________________
+    dropout_6 (Dropout)          (None, 256)               0
+    _________________________________________________________________
+    dense_3 (Dense)              (None, 128)               32896
+    _________________________________________________________________
+    activation_11 (ReLU)         (None, 128)               0
+    _________________________________________________________________
+    dropout_7 (Dropout)          (None, 128)               0
+    _________________________________________________________________
+    dense_4 (Dense)              (None, 10)                1290
+    _________________________________________________________________
+    activation_12 (SoftMax)      (None, 10)                0
+    =================================================================
+    Total params: 3,725,140
+    Trainable params: 1,862,570
+    Non-trainable params: 1,862,570
+    _________________________________________________________________
+    None
+
+    Additional INFO
+    ================
+	{'name': 'conv2d_1', 'trainable': True, 'batch_input_shape': (None, 64, 64, 3), 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_1', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'conv2d_2', 'trainable': True, 'dtype': 'float32', 'filters': 32, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'valid', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_2', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'max_pooling2d_1', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}
+	{'name': 'dropout_1', 'trainable': True, 'dtype': 'float32', 'rate': 0.25, 'noise_shape': None, 'seed': None}
+	{'name': 'conv2d_3', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_3', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'conv2d_4', 'trainable': True, 'dtype': 'float32', 'filters': 64, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'valid', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_4', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'max_pooling2d_2', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}
+	{'name': 'dropout_2', 'trainable': True, 'dtype': 'float32', 'rate': 0.25, 'noise_shape': None, 'seed': None}
+	{'name': 'conv2d_5', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_5', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'conv2d_6', 'trainable': True, 'dtype': 'float32', 'filters': 128, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'valid', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_6', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'max_pooling2d_3', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}
+	{'name': 'dropout_3', 'trainable': True, 'dtype': 'float32', 'rate': 0.25, 'noise_shape': None, 'seed': None}
+	{'name': 'conv2d_7', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'same', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_7', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'conv2d_8', 'trainable': True, 'dtype': 'float32', 'filters': 256, 'kernel_size': (3, 3), 'strides': (1, 1), 'padding': 'valid', 'data_format': 'channels_last', 'dilation_rate': (1, 1), 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_8', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'max_pooling2d_4', 'trainable': True, 'dtype': 'float32', 'pool_size': (2, 2), 'padding': 'valid', 'strides': (2, 2), 'data_format': 'channels_last'}
+	{'name': 'dropout_4', 'trainable': True, 'dtype': 'float32', 'rate': 0.25, 'noise_shape': None, 'seed': None}
+	{'name': 'flatten_1', 'trainable': True, 'dtype': 'float32', 'data_format': 'channels_last'}
+	{'name': 'dense_1', 'trainable': True, 'dtype': 'float32', 'units': 512, 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_9', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'dropout_5', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}
+	{'name': 'dense_2', 'trainable': True, 'dtype': 'float32', 'units': 256, 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_10', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'dropout_6', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}
+	{'name': 'dense_3', 'trainable': True, 'dtype': 'float32', 'units': 128, 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_11', 'trainable': True, 'dtype': 'float32', 'activation': 'relu'}
+	{'name': 'dropout_7', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}
+	{'name': 'dense_4', 'trainable': True, 'dtype': 'float32', 'units': 10, 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
+	{'name': 'activation_12', 'trainable': True, 'dtype': 'float32', 'activation': 'softmax'}
