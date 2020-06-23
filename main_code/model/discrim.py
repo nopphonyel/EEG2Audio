@@ -79,11 +79,13 @@ class DISCRIM_RGB(nn.Module):
     """
     Expected tensor to have shape (N,C,H,W,...)
     """
+
     def forward(self, img):
         for idx, conv2d_layer in enumerate(self.conv2dPack):
-            print("LAYER :", idx)
-            img = conv2d_layer(img)
-            print(img.shape)
+            if idx == 0:
+                x = conv2d_layer(img)
+            else:
+                x = conv2d_layer(x)
 
         flatten_shape = self.__find_total_dim(img)
         x = img.reshape([img.shape[0], flatten_shape])  # flatten operation
@@ -91,5 +93,5 @@ class DISCRIM_RGB(nn.Module):
 
         x = self.dense(x)
         fake = self.sigmoid(x)
-        # img_class = self.img_classifier(x)
-        return fake  # , img_class  # Todo: merge into a single tensor (Do we really need to merge?)
+        img_class = self.img_classifier(img)
+        return fake, img_class

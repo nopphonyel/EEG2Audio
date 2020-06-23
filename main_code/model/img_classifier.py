@@ -4,6 +4,11 @@ from torch import nn
 
 
 class VGG16_IMG_CLASSIFIER(nn.Module):
+    """
+    Expected output size = 10
+    There is 10 class of images
+    """
+
     def __init__(self):
         super(VGG16_IMG_CLASSIFIER, self).__init__()
         self.conv2d_1 = nn.Sequential(  # Todo: Padding same

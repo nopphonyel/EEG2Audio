@@ -1,6 +1,7 @@
 import torch
 from torch import nn
 from main_code.model.layer.MoGLayer import MoGLayer
+from main_code.model.discrim import DISCRIM_RGB
 
 
 def gen_noise(noise_dim):
@@ -10,7 +11,7 @@ def gen_noise(noise_dim):
 class GENERATOR_RGB(nn.Module):
     def __init__(self, noise_dim, features_dim):
         super(GENERATOR_RGB, self).__init__()
-        assert features_dim == noise_dim, "<X>: Noise and features dimension expect to be same."
+        assert features_dim == noise_dim, "<X>: Currently, noise and features dimension expect to be same."
         self.noise_dim = noise_dim
 
         # From equation z = MEANi + (STDi * EP) | EP ~ N(0,1)
