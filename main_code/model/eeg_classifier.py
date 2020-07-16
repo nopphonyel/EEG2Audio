@@ -3,7 +3,7 @@ import torch
 
 
 class EEG_CLASSIFIER(nn.Module):
-    def __init__(self, eegChanNum, outputSize):
+    def __init__(self, eegChanNum=14, outputSize=10):
         super(EEG_CLASSIFIER, self).__init__()
         ## (BATCH, CHAN, EEG_CHAN, EEG_LEN)
         self.batchNorm_1 = nn.BatchNorm2d(num_features=1)
@@ -67,7 +67,7 @@ class EEG_CLASSIFIER(nn.Module):
     Expected tensor to have shape (N,C,H,W)
     N : Batch size
     C : Channel
-    H : Electrode or EEG Channel (Expected to be 14)
+    H : Electrode or EEG Channel (Default is 14)
     W : Sample len (The ThoughtViz use len = 32)
     """
 

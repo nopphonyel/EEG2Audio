@@ -269,3 +269,26 @@
 	{'name': 'dropout_7', 'trainable': True, 'dtype': 'float32', 'rate': 0.5, 'noise_shape': None, 'seed': None}
 	{'name': 'dense_4', 'trainable': True, 'dtype': 'float32', 'units': 10, 'activation': 'linear', 'use_bias': True, 'kernel_initializer': {'class_name': 'VarianceScaling', 'config': {'scale': 1.0, 'mode': 'fan_avg', 'distribution': 'uniform', 'seed': None}}, 'bias_initializer': {'class_name': 'Zeros', 'config': {}}, 'kernel_regularizer': None, 'bias_regularizer': None, 'activity_regularizer': None, 'kernel_constraint': None, 'bias_constraint': None}
 	{'name': 'activation_12', 'trainable': True, 'dtype': 'float32', 'activation': 'softmax'}
+
+
+<Q>:
+    - LINK : {
+        https://medium.com/@himanshuxd/activation-functions-sigmoid-relu-leaky-relu-and-softmax-basics-for-neural-networks-and-deep-8d9c70eed91e
+    }
+    - What, Why, How relu
+        - Leaky why (0.2), why in discriminator
+            # Since sigmoid has limited range, the info can be loss
+            # ReLU can cause the dying relu problem... where backproporgate and its become 0
+            - 
+        - ReLU why in generator
+    - Why dropout p = 0.5, not 0.1
+        - Too many dropout cause underfit?
+    - What is the range of batchnorm?
+        # momentum is : How much changing the estimated statistic X^ to new observed value Xt.
+        - Diff normalization, stardardization
+    - What is ConvTranspose2d
+    - Cost function of GANs
+
+<Recommend committee>:
+    - Prof. MATT
+    - Prof. Atthaphon (Pong)

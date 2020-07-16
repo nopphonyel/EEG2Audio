@@ -6,3 +6,13 @@ code/audio_sample/
 audio_sample/
 
 Additional paper/
+
+main_code/dataset/MindBigData-EP-v1.0/
+
+main_code/dataset/Imagined_speech_EEG/
+
+main_code/dataset/*.zip
+
+main_code/dataset/*.tar.gz
+
+.idea/

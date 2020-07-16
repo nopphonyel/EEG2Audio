@@ -1,0 +1,5 @@
+Russian paper
+    - Read about Model encoder : Why VGG11
+    - Why compare the reconstruct image and find the lost?
+    - Why Encoder can input 2 images?
+    - Attention based encoder decoder networks.

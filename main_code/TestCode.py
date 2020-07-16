@@ -1,5 +1,10 @@
-from main_code.dataset.dummy_dataset import DummyDataset
+from main_code.dataset.numerical_stimuli.dataset import IMG_NUM_DATASET
+from torchvision import transforms
+import matplotlib.pyplot as plt
 
-dataset = DummyDataset()
-sample_eeg, sample_label, sample_class = dataset.test_get_item(15)
-print(sample_eeg.shape, sample_label.shape, sample_class.shape)
+dataset = IMG_NUM_DATASET()
+for i in range(10):
+    img, label = dataset.test_get_item(i)
+    final_img = transforms.ToPILImage()(img)
+    plt.imshow(final_img, cmap='gray')
+    plt.show()

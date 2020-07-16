@@ -6,13 +6,14 @@ from torch import nn
 class VGG16_IMG_CLASSIFIER(nn.Module):
     """
     Expected output size = 10
+    recommend input size = 64x64
     There is 10 class of images
     """
 
     def __init__(self):
         super(VGG16_IMG_CLASSIFIER, self).__init__()
         self.conv2d_1 = nn.Sequential(  # Todo: Padding same
-            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=(3, 3))
+            nn.Conv2d(in_channels=1, out_channels=32, kernel_size=(3, 3))
             , nn.ReLU()
         )
 
