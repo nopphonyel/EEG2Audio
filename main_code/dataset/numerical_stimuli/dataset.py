@@ -17,8 +17,8 @@ class IMG_NUM_DATASET(TensorDataset):
         self.__load_img()
 
     def __load_img(self):
-        img_list = glob.glob("dataset/numerical_stimuli/png/*.png")
-        for eimg_path in img_list:
+        self.img_list = glob.glob("dataset/numerical_stimuli/png/*.png")
+        for eimg_path in self.img_list:
             img = Image.open(eimg_path, "r")
             # Get the right index for store the image
             idx = int(img.filename[-5:-4])
@@ -42,6 +42,16 @@ class IMG_NUM_DATASET(TensorDataset):
     def __getitem__(self, idx):
         img_num = self.img_num[idx % 10]
         return self.__add_noise(img_num), self.label[idx % 10]
+
+    def get_raw_img_tensor(self, class_id: torch.Tensor):  # Expected to be a tensor of integer (Not 1hot encoded)
+        pack = None
+        for i in class_id:
+            if pack is None:
+                pack = self.img_num[i.item()].unsqueeze(0)
+            else:
+                pack = torch.cat((pack, self.img_num[i.item()].unsqueeze(0)), 0)
+
+        return pack
 
     def test_get_item(self, idx):
         return self.__getitem__(idx)

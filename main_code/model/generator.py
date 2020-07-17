@@ -50,7 +50,7 @@ class GENERATOR_RGB(nn.Module):
 
         self.conv2dT04 = nn.Sequential(
             nn.BatchNorm2d(num_features=64, momentum=0.8)
-            , nn.ConvTranspose2d(in_channels=64, out_channels=3, kernel_size=4, padding=1, stride=2)
+            , nn.ConvTranspose2d(in_channels=64, out_channels=1, kernel_size=4, padding=1, stride=2)
             , nn.ReLU()
         )
 
@@ -64,7 +64,7 @@ class GENERATOR_RGB(nn.Module):
         x = self.MoGLayer(noise_input)
         x = self.dense01(x)
         x = x * eeg_features  # Multiply noise with eeg signal here
-        print(x.shape)  # Expected to be 2 dimension
+        # print(x.shape)  # Expected to be 2 dimension
 
         # if len(x.shape) >= 2:
         x = self.batchNorm01(x)  # This layer allowed one batch when the model in eval mode.

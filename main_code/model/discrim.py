@@ -17,7 +17,7 @@ class DISCRIM_RGB(nn.Module):
         self.conv2dPack = nn.ModuleList()
         self.conv2dPack.append(
             nn.Sequential(
-                nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=2)
+                nn.Conv2d(in_channels=1, out_channels=16, kernel_size=3, stride=2)
                 , nn.LeakyReLU(0.2)
                 , nn.Dropout(0.5)
             )

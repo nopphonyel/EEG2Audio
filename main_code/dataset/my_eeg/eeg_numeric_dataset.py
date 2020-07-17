@@ -14,11 +14,11 @@ class EEG_NUM_STIM(TensorDataset):
 
     def train(self):
         self.train_state = True
-        self.data_set = pickle.load(open("dataset/eeg_stim_train.dat", "rb"))
+        self.data_set = pickle.load(open("dataset/my_eeg/eeg_stim_train.dat", "rb"))
 
     def eval(self):
         self.train_state = False
-        self.data_set = pickle.load(open("dataset/eeg_stim_test.dat", "rb"))
+        self.data_set = pickle.load(open("dataset/my_eeg/eeg_stim_test.dat", "rb"))
 
     def __getitem__(self, idx):
         return self.data_set[idx][0], self.data_set[idx][1]
