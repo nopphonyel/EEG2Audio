@@ -1,4 +1,3 @@
-from prompt_toolkit import output
 from torch import nn
 import torch
 import torch.nn.functional as func
@@ -70,6 +69,8 @@ class DISCRIM_RGB(nn.Module):
 
         self.sigmoid = nn.Sigmoid()
 
+        self.dense = nn.Linear(in_features=4096, out_features=1)
+
     def __find_total_dim(self, tensor):
         total = 1
         for i in range(1, len(tensor.shape)):
@@ -89,7 +90,7 @@ class DISCRIM_RGB(nn.Module):
 
         flatten_shape = self.__find_total_dim(img)
         x = img.reshape([img.shape[0], flatten_shape])  # flatten operation
-        self.dense = nn.Linear(in_features=x.shape[1], out_features=1)  # Todo: recheck the input_features.
+        #self.dense = nn.Linear(in_features=x.shape[1], out_features=1)  # Todo: recheck the input_features.
 
         x = self.dense(x)
         fake = self.sigmoid(x)

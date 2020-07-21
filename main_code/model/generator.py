@@ -78,3 +78,6 @@ class GENERATOR_RGB(nn.Module):
         x = self.conv2dT04(x)
         x = self.tanh(x)
         return x
+
+    def set_dev(self, dev):
+        self.MoGLayer.set_dev(dev)

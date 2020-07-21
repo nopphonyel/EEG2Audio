@@ -20,5 +20,8 @@ class MoGLayer(nn.Module):
         pre_mean = torch.nn.init.uniform_(pre_mean, -1.0, 1.0)
         self.mean = nn.Parameter(pre_mean, requires_grad=True)
 
+    def set_dev(self, DEV):
+        self.dev = DEV
+
     def forward(self, noise):
-        return self.mean + (self.std * noise)
+        return self.mean.to(self.dev) + (self.std.to(self.dev) * noise.to(self.dev))
